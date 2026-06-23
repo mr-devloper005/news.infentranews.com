@@ -6,36 +6,36 @@ import { EditableContactLeadForm } from '@/editable/components/EditableContactLe
 import { EditableSiteShell } from '@/editable/shell/EditableSiteShell'
 
 const desks = [
-  { icon: FileText, title: 'Editorial desk', body: 'Send story ideas, corrections, source material, and publication questions.' },
-  { icon: Megaphone, title: 'Media partnerships', body: 'Discuss distribution, syndication, newsroom collaborations, and campaigns.' },
-  { icon: Mail, title: 'General support', body: 'Reach the team for account, publishing, or site-related help.' },
+  { icon: FileText, title: 'Editorial desk', body: 'Send story ideas, corrections, source material, and publishing questions.' },
+  { icon: Megaphone, title: 'Distribution support', body: 'Discuss release formatting, campaign direction, syndication, and category strategy.' },
+  { icon: Mail, title: 'General support', body: 'Reach out for account, publishing, or site-related help through one clear intake path.' },
 ]
 
 export default function ContactPage() {
   return (
     <EditableSiteShell>
-      <main className="bg-[#f7f4ef] text-[#111]">
-        <section className="border-b border-black bg-white">
-          <div className="mx-auto max-w-[var(--editable-container)] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
-            <p className="text-xs font-black uppercase tracking-[0.28em] text-[#c92f2f]">{pagesContent.contact.eyebrow}</p>
-            <h1 className="editorial-brand mt-4 max-w-5xl text-6xl font-black leading-[0.92] tracking-[-0.055em] sm:text-8xl">{pagesContent.contact.title}</h1>
-            <p className="mt-6 max-w-2xl border-l-4 border-[#c92f2f] pl-5 text-base font-semibold leading-8 text-black/65">{pagesContent.contact.description}</p>
+      <main className="editorial-shell bg-[var(--slot4-page-bg)] text-[var(--slot4-page-text)]">
+        <section className="mx-auto max-w-[var(--editable-container)] px-4 py-8 sm:px-6 lg:px-8">
+          <div className="rounded-[3rem] bg-[#e9e5d8] px-6 py-10 sm:px-10 lg:px-14 lg:py-14">
+            <p className="editorial-kicker text-[11px] font-black text-[var(--slot4-accent-fill)]">{pagesContent.contact.eyebrow}</p>
+            <h1 className="editorial-serif mt-5 max-w-5xl text-5xl font-semibold leading-[0.94] tracking-[-0.06em] text-[var(--slot4-highlight-strong)] sm:text-6xl lg:text-[5.1rem]">{pagesContent.contact.title}</h1>
+            <p className="mt-6 max-w-2xl border-l-4 border-[var(--slot4-accent-fill)] pl-5 text-base leading-8 text-[var(--slot4-highlight-strong)]/70">{pagesContent.contact.description}</p>
           </div>
         </section>
 
-        <section className="mx-auto grid max-w-[var(--editable-container)] border-x border-black bg-white lg:grid-cols-[0.72fr_1.28fr]">
-          <aside className="border-b border-black bg-[#171717] text-white lg:border-b-0 lg:border-r">
+        <section className="mx-auto grid max-w-[var(--editable-container)] gap-6 px-4 pb-16 pt-4 sm:px-6 lg:grid-cols-[0.78fr_1.22fr] lg:px-8">
+          <aside className="rounded-[2.8rem] bg-[var(--slot4-dark-bg)] text-white">
             {desks.map((desk, index) => (
-              <div key={desk.title} className="border-b border-white/25 p-7 last:border-b-0 sm:p-9">
-                <div className="flex items-center justify-between"><desk.icon className="h-5 w-5 text-[#f34a43]" /><span className="text-xs font-black text-white/45">0{index + 1}</span></div>
-                <h2 className="editorial-serif mt-6 text-3xl font-black">{desk.title}</h2>
-                <p className="mt-3 text-sm leading-7 text-white/65">{desk.body}</p>
+              <div key={desk.title} className={`p-7 sm:p-9 ${index ? 'border-t border-white/15' : ''}`}>
+                <div className="flex items-center justify-between"><desk.icon className="h-5 w-5 text-[var(--slot4-accent-soft)]" /><span className="text-xs font-black text-white/45">0{index + 1}</span></div>
+                <h2 className="editorial-serif mt-6 text-3xl font-semibold">{desk.title}</h2>
+                <p className="mt-3 text-sm leading-7 text-white/68">{desk.body}</p>
               </div>
             ))}
           </aside>
-          <div className="p-6 sm:p-10 lg:p-14">
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-[#c92f2f]">Send a message</p>
-            <h2 className="editorial-serif mt-3 text-4xl font-black">{pagesContent.contact.formTitle}</h2>
+          <div className="rounded-[2.8rem] bg-white p-6 shadow-[0_18px_45px_rgba(98,43,20,0.04)] sm:p-10">
+            <p className="editorial-kicker text-[11px] font-black text-[var(--slot4-accent-fill)]">Send a message</p>
+            <h2 className="editorial-serif mt-3 text-4xl font-semibold">{pagesContent.contact.formTitle}</h2>
             <EditableContactLeadForm />
           </div>
         </section>
