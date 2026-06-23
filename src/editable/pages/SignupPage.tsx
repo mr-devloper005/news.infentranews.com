@@ -12,18 +12,18 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function SignupPage() {
   return (
     <EditableSiteShell>
-      <main className="bg-[#f7f4ef] text-[#111]">
-        <section className="mx-auto grid min-h-[calc(100vh-12rem)] max-w-[var(--editable-container)] border-x border-black bg-white lg:grid-cols-[0.92fr_1.08fr]">
-          <div className="flex flex-col justify-center border-b border-black p-7 sm:p-12 lg:border-b-0 lg:border-r lg:p-16">
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-[#c92f2f]">Create account</p>
-            <h1 className="editorial-serif mt-3 text-4xl font-black">{pagesContent.auth.signup.formTitle}</h1>
+      <main className="editorial-shell bg-[var(--slot4-page-bg)] text-[var(--slot4-page-text)]">
+        <section className="mx-auto grid min-h-[calc(100vh-12rem)] max-w-[var(--editable-container)] gap-6 px-4 py-8 sm:px-6 lg:grid-cols-[0.92fr_1.08fr] lg:px-8">
+          <div className="flex flex-col justify-center rounded-[2.8rem] bg-white p-7 shadow-[0_18px_45px_rgba(98,43,20,0.04)] sm:p-12 lg:p-16">
+            <p className="editorial-kicker text-[11px] font-black text-[var(--slot4-accent-fill)]">Create account</p>
+            <h1 className="editorial-serif mt-3 text-4xl font-semibold">{pagesContent.auth.signup.formTitle}</h1>
             <EditableLocalSignupForm />
-            <p className="mt-5 border-t border-black pt-5 text-sm text-black/65">Already have an account? <Link href="/login" className="font-black text-[#c92f2f] underline-offset-4 hover:underline">{pagesContent.auth.signup.loginCta}</Link></p>
+            <p className="mt-5 border-t border-[color:var(--slot4-card-line)] pt-5 text-sm text-[var(--slot4-muted-text)]">Already have an account? <Link href="/login" className="font-black text-[var(--slot4-accent-fill)] underline-offset-4 hover:underline">{pagesContent.auth.signup.loginCta}</Link></p>
           </div>
-          <div className="flex flex-col justify-center bg-[#171717] p-8 text-white sm:p-12 lg:p-16">
-            <p className="text-xs font-black uppercase tracking-[0.28em] text-[#f34a43]">{pagesContent.auth.signup.badge}</p>
-            <h2 className="editorial-brand mt-5 max-w-xl text-6xl font-black leading-[0.92] tracking-[-0.055em] sm:text-8xl">{pagesContent.auth.signup.title}</h2>
-            <p className="mt-6 max-w-lg text-sm font-semibold leading-8 text-white/68">{pagesContent.auth.signup.description}</p>
+          <div className="flex flex-col justify-center rounded-[2.8rem] bg-[var(--slot4-dark-bg)] p-8 text-white sm:p-12 lg:p-16">
+            <p className="editorial-kicker text-[11px] font-black text-[var(--slot4-accent-soft)]">{pagesContent.auth.signup.badge}</p>
+            <h2 className="editorial-serif mt-5 max-w-xl text-5xl font-semibold leading-[0.94] tracking-[-0.06em] sm:text-7xl">{pagesContent.auth.signup.title}</h2>
+            <p className="mt-6 max-w-lg text-base leading-8 text-white/70">{pagesContent.auth.signup.description}</p>
           </div>
         </section>
       </main>

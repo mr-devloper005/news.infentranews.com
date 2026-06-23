@@ -1,6 +1,6 @@
-# Slot 4 Editable Manifest
+# Premium Editable Manifest
 
-Slot 4 is now a reference-ready editable UI architecture.
+This workspace uses a reference-ready editable UI architecture for premium editorial redesigns.
 
 ## Contract
 

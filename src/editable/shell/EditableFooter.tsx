@@ -11,34 +11,71 @@ export function EditableFooter() {
   const { session, logout } = useEditableLocalAuthSession()
 
   return (
-    <footer className="border-t-8 border-[var(--slot4-accent)] bg-black text-white">
-      <div className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:px-10 lg:py-20">
-        <div className="grid gap-12 lg:grid-cols-[1.2fr_.7fr_.7fr]">
-          <div>
-            <Link href="/" className="editorial-brand text-5xl font-black text-[var(--slot4-accent)] sm:text-6xl">{SITE_CONFIG.name}</Link>
-            <p className="mt-6 max-w-xl text-sm leading-7 text-white/62">{globalContent.footer?.description || SITE_CONFIG.description}</p>
-            <form action="/signup" className="mt-8 flex max-w-xl border border-white/35">
-              <input name="email" type="email" placeholder="Email for newsroom updates" className="min-w-0 flex-1 bg-transparent px-4 py-4 text-sm outline-none placeholder:text-white/40" />
-              <button className="bg-[var(--slot4-accent)] px-5 text-xs font-black uppercase tracking-[.14em]">Subscribe</button>
-            </form>
-          </div>
-          <div>
-            <h3 className="border-b border-white/25 pb-3 text-[10px] font-black uppercase tracking-[.22em] text-white/55">Explore</h3>
-            <div className="mt-4 grid gap-3">
-              <Link href="/search" className="group inline-flex items-center justify-between text-sm font-black uppercase tracking-[.08em] hover:text-[var(--slot4-accent)]">Archive<ArrowRight className="h-4 w-4" /></Link>
-            </div>
-          </div>
-          <div>
-            <h3 className="border-b border-white/25 pb-3 text-[10px] font-black uppercase tracking-[.22em] text-white/55">Publication</h3>
-            <div className="mt-4 grid gap-3">
-              <Link href="/about" className="text-sm font-black uppercase tracking-[.08em] hover:text-[var(--slot4-accent)]">About</Link>
-              <Link href="/contact" className="text-sm font-black uppercase tracking-[.08em] hover:text-[var(--slot4-accent)]">Contact</Link>
-              {session ? <><Link href="/create" className="text-sm font-black uppercase tracking-[.08em] hover:text-[var(--slot4-accent)]">Publish</Link><button onClick={logout} className="text-left text-sm font-black uppercase tracking-[.08em] hover:text-[var(--slot4-accent)]">Logout</button></> : <><Link href="/login" className="text-sm font-black uppercase tracking-[.08em] hover:text-[var(--slot4-accent)]">Log in</Link><Link href="/signup" className="text-sm font-black uppercase tracking-[.08em] hover:text-[var(--slot4-accent)]">Subscribe</Link></>}
+    <footer className="mt-16">
+      <section className="mx-auto max-w-[var(--editable-container)] px-4 sm:px-6 lg:px-8">
+        <div className="rounded-t-[3.5rem] rounded-br-[7rem] bg-[var(--slot4-dark-bg)] px-6 py-12 text-[var(--slot4-dark-text)] shadow-[0_40px_100px_rgba(22,55,58,0.18)] sm:px-10 lg:px-14 lg:py-16">
+          <div className="mx-auto max-w-4xl text-center">
+            <h2 className="editorial-serif text-4xl font-semibold leading-[1.02] tracking-[-0.05em] sm:text-6xl">
+              Ready to transform your communications?
+            </h2>
+            <p className="mt-5 text-xl text-white/82">Take a personalized tour today.</p>
+            <div className="mt-8 flex justify-center">
+              <Link href={session ? '/create' : '/contact'} className="inline-flex rounded-full bg-[#c03679] px-8 py-4 text-sm font-black text-white transition hover:-translate-y-0.5 hover:bg-[var(--slot4-accent-fill)]">
+                {session ? 'Start publishing' : 'Request a free demo'}
+              </Link>
             </div>
           </div>
         </div>
+      </section>
+
+      <div className="mx-auto max-w-[var(--editable-container)] px-4 pb-10 pt-12 sm:px-6 lg:px-8">
+        <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-4">
+          <div>
+            <Link href="/" className="inline-flex items-center gap-3 editorial-serif text-4xl font-semibold tracking-[-0.05em] text-[var(--slot4-highlight-strong)]">
+              <img src="/favicon.png" width="48" height="48" alt="logo" className="h-12 w-12 object-contain" />
+              <span>{SITE_CONFIG.name}</span>
+            </Link>
+            <p className="mt-4 max-w-sm text-sm leading-7 text-[var(--slot4-muted-text)]">
+              {globalContent.footer.description}
+            </p>
+          </div>
+
+          {globalContent.footer.columns.map((column) => (
+            <div key={column.title}>
+              <h3 className="text-lg font-black text-[var(--slot4-highlight-strong)]">{column.title}</h3>
+              <div className="mt-4 grid gap-3 text-sm text-[var(--slot4-muted-text)]">
+                {column.links.map((link) => (
+                  <Link key={`${column.title}-${link.href}`} href={link.href} className="transition hover:text-[var(--slot4-accent-fill)]">
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
+
+          <div>
+            <h3 className="text-lg font-black text-[var(--slot4-highlight-strong)]">Account</h3>
+            <div className="mt-4 grid gap-3 text-sm text-[var(--slot4-muted-text)]">
+              {session ? (
+                <>
+                  <Link href="/create" className="transition hover:text-[var(--slot4-accent-fill)]">Create a post</Link>
+                  <button type="button" onClick={logout} className="text-left transition hover:text-[var(--slot4-accent-fill)]">Logout</button>
+                </>
+              ) : (
+                <>
+                  <Link href="/login" className="transition hover:text-[var(--slot4-accent-fill)]">Login</Link>
+                  <Link href="/signup" className="transition hover:text-[var(--slot4-accent-fill)]">Sign up</Link>
+                </>
+              )}
+            </div>
+            
+          </div>
+        </div>
+
+        <div className="mt-10 border-t border-[color:var(--slot4-line)] pt-5 text-xs uppercase tracking-[0.18em] text-[var(--slot4-soft-muted-text)]">
+          © {year} {SITE_CONFIG.name}. {globalContent.footer.bottomNote}
+        </div>
       </div>
-      <div className="border-t border-white/20 px-4 py-5 text-center text-[10px] font-black uppercase tracking-[.18em] text-white/45">© {year} {SITE_CONFIG.name}. Independent media and public information.</div>
     </footer>
   )
 }

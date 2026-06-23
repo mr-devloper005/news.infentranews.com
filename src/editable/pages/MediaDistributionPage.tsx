@@ -9,11 +9,5 @@ export default async function MediaDistributionPage({
 }: {
   searchParams?: Promise<{ category?: string; page?: string }>
 }) {
-  return (
-    <EditableTaskArchiveRoute
-      task="mediaDistribution"
-      searchParams={searchParams}
-      basePath={mediaDistributionRoute}
-    />
-  )
+  return <EditableTaskArchiveRoute task="mediaDistribution" searchParams={searchParams} basePath={mediaDistributionRoute} />
 }
