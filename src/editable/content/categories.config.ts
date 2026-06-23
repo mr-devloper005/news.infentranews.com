@@ -17,5 +17,7 @@ export const mediaDistributionCategories = {
     { name: 'Automotive', slug: 'automotive' },
     { name: 'Public Relations', slug: 'public-relations' },
     { name: 'Press Release', slug: 'press-release' },
+    { name: 'Media Strategy', slug: 'media-strategy' },
+    { name: 'Distribution Insights', slug: 'distribution-insights' },
   ] satisfies EditableCategory[],
 } as const
